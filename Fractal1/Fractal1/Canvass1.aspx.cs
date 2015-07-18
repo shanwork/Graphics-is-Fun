@@ -26,7 +26,17 @@ namespace Fractal1
 
             Bitmap oCanvas = new Bitmap(500, 450);
             Response.ContentType = "image/jpeg";
-            oCanvas = FractalImages.DrawRandom(390, 390, 10, 380, 10, 380, red, green, blue);
+          //  oCanvas = FractalImages.DrawRandom(790, 590, 10, 380, 10, 380, red, green, blue);
+            int fractalIndex = 0;
+            if (Session["FractalIndex"] != null)
+            {
+                bool isValidIndex = int.TryParse(Session["FractalIndex"].ToString(), out fractalIndex);
+
+            }
+            fractalIndex += 10;
+            if (fractalIndex > 250)
+                fractalIndex = 0;
+            oCanvas = FractalImages.DrawRandomIndexed(790, 590, 10, 380, 10, 380, red, green, blue, fractalIndex);
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();
 

@@ -88,7 +88,7 @@ namespace Fractal1
         }
         public static Bitmap DrawRandom(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
-            List<Color> Palette = GenerateColorPalette(r,g,b);
+            List<Color> Palette = GenerateColorPalette(r, g, b);
             FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
@@ -100,36 +100,138 @@ namespace Fractal1
             {
                 for (int y = 0; y < height; y++)
                 {
-                    
+
                     for (int i = 0; i < Palette.Count; i++) // 255 iterations with the method we already wrote
                     {
-                        try
+                        int dividend = (Palette.Count + i - y);
+
+                        if (dividend != 0)
                         {
-                            if ((Palette.Count - i + x) % (Palette.Count + i - y) < 2)
+                            if ((Palette.Count - i + x) % dividend < 2)
                             {
                                 img.SetPixel(x, y, Palette[i]); // Set the pixel if the magnitude is greater than two
                                 break;
                             }
-                            if ((Palette.Count - i + x) % (Palette.Count + i - y) < 3 && i > 0)
+                            if ((Palette.Count - i + x) % dividend < 3 && i > 0)
                             {
-                                img.SetPixel(x, y, Palette[i-1]); // Set the pixel if the magnitude is greater than two
+                                img.SetPixel(x, y, Palette[i - 1]); // Set the pixel if the magnitude is greater than two
                                 break;
                             }
-                            if ((Palette.Count - i + x) % (Palette.Count + i - y) < 4 && i > 1)
+                            if ((Palette.Count - i + x) % dividend < 4 && i > 1)
                             {
                                 img.SetPixel(x, y, Palette[i - 2]); // Set the pixel if the magnitude is greater than two
                                 break;
                             }
-                            if ((Palette.Count - i + x) % (Palette.Count + i - y) < 5 && i > 2)
+                            if ((Palette.Count - i + x) % dividend < 5 && i > 2)
                             {
                                 img.SetPixel(x, y, Palette[i - 3]); // Set the pixel if the magnitude is greater than two
                                 break;
                             }
-                           
+
                         }
-                        catch (DivideByZeroException ex)
+                        else
                         {
-                            continue;
+                            if (i == 0)
+                            {
+                                img.SetPixel(x, y, Palette[i]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (i > 0)
+                            {
+                                img.SetPixel(x, y, Palette[i - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (i > 1)
+                            {
+                                img.SetPixel(x, y, Palette[i - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (i > 2)
+                            {
+                                img.SetPixel(x, y, Palette[i - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return img.Bitmap;
+        }
+        
+        public static Bitmap DrawRandomIndexed(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex=0)
+        {
+            List<Color> Palette = GenerateColorPalette(r,g,b);
+            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+
+            double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
+            double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
+
+            Random xRand = new Random();
+            Random yRand = new Random();
+            int index = 0;
+            for (int x = index; x < width; x++)
+            {
+                for (int y = index; y < height; y++)
+                {
+                    
+                    for (int i = 0; i < Palette.Count; i++) // 255 iterations with the method we already wrote
+                    {
+                        int palletteIndex = i + ifractalIndex;
+                        if (palletteIndex > 255)
+                            palletteIndex = 0;
+                        int dividend = (Palette.Count + i - y) ;
+                        int xDisp = x ;
+                        if (xDisp > width) xDisp = index;
+                        int yDisp = y ;
+                        if (yDisp > height) yDisp = index;
+                        if (dividend != 0)
+                        {
+                            if ((Palette.Count - palletteIndex + x) % dividend < 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 3 && palletteIndex > 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex-1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 4 && palletteIndex > 1)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 5 && palletteIndex > 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                           
+                        } 
+                        else
+                        {
+                            if (palletteIndex ==0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ( palletteIndex > 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ( palletteIndex > 1)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ( palletteIndex > 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
                         }
                      
                     }
@@ -138,7 +240,136 @@ namespace Fractal1
 
             return img.Bitmap;
         }
-        public static Bitmap DrawMandelbrot(int width, int height, double rMin, double rMax, double iMin, double iMax, int r=0, int g=0, int b=0)
+        public static Bitmap DrawRandom2(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
+        {
+            List<Color> Palette = GenerateColorPalette(r, g, b);
+            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+
+            double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
+            double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
+
+            Random xRand = new Random();
+            Random yRand = new Random();
+            for (int x = width-1; x >= 0; x--)
+            {
+                for (int y = 0; y < height; y++)
+                {
+
+                    for (int i = 0; i < Palette.Count; i++) // 255 iterations with the method we already wrote
+                    {
+                        int dividend = (Palette.Count  - y)  ;
+
+                        if (dividend != 0)
+                        {
+                            if ((Palette.Count - i) % dividend < 2)
+                            {
+                                img.SetPixel(x, y, Palette[i]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - i ) % dividend < 3 && i > 0)
+                            {
+                                img.SetPixel(x, y, Palette[i - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - i) % dividend < 4 && i > 1)
+                            {
+                                img.SetPixel(x, y, Palette[i - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - i) % dividend < 5 && i > 2)
+                            {
+                                img.SetPixel(x, y, Palette[i - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+
+                        }
+                        else
+                        {
+                            if ((Palette.Count - i + x) % dividend < 2)
+                            {
+                                img.SetPixel(x, y, Palette[i]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - i + x) % dividend < 3 && i > 0)
+                            {
+                                img.SetPixel(x, y, Palette[i - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - i + x) % dividend < 4 && i > 1)
+                            {
+                                img.SetPixel(x, y, Palette[i - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - i + x) % dividend < 5 && i > 2)
+                            {
+                                img.SetPixel(x, y, Palette[i - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return img.Bitmap;
+        }
+        public static Bitmap DrawRandom2Broken(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
+        {
+            List<Color> Palette = GenerateColorPalette(g, b, r);
+            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+
+            double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
+            double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
+
+            Random xRand = new Random();
+            Random yRand = new Random();
+            for (int x = height-1; x >=0; x--)
+            {
+                for (int y = 0; y < height; y++)
+                {
+
+                    for (int i = 0; i < Palette.Count; i++) // 255 iterations with the method we already wrote
+                    {
+                        int dividend = (Palette.Count - i + y);
+                        if (dividend == 0) dividend = i + 2;
+                        if (dividend != 0)
+                         {
+                            if ((Palette.Count + i - x) % dividend < 2)
+                            {
+                                img.SetPixel(x, y, Palette[i]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            else if ((Palette.Count + i - x) % dividend < 3 && i > 0)
+                            {
+                                img.SetPixel(x, y, Palette[i - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            else if ((Palette.Count + i - x) % dividend < 4 && i > 1)
+                            {
+                                img.SetPixel(x, y, Palette[i - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            else if ((Palette.Count + i - x) % dividend < 5 && i > 2)
+                            {
+                                img.SetPixel(x, y, Palette[i - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            //else  
+                            //{
+                            //    int defaultPalleteIndex = (i + 1 < Palette.Count ? i + 1 : i);
+                            //    img.SetPixel(x, y, Palette[defaultPalleteIndex]); // Set the pixel if the magnitude is greater than two
+                            //    break;
+                            //}
+                        }
+                         
+
+                    }
+                }
+            }
+
+            return img.Bitmap;
+        }
+        public static Bitmap DrawMandelbrot(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
             List<Color> Palette = GenerateColorPalette(r,g,b);
             FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set

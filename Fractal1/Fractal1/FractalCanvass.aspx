@@ -29,6 +29,7 @@
             </Scripts>
         </asp:ScriptManager>
     <div>
+        <div style="float:left">
          <asp:UpdatePanel ID="test" runat="server">
               <Triggers>
                   <asp:AsyncPostBackTrigger ControlID="tmr" EventName="Tick" />
@@ -36,10 +37,12 @@
             <ContentTemplate>
                 <asp:Timer ID="tmr" runat="server" OnTick="tmr_Tick" Interval="1500" ></asp:Timer>
                 <img id="img1" src="Canvass1.aspx" runat="server"  />
-                <asp:Label ID="lbl1" runat="server">A</asp:Label>
+                <asp:Label ID="lbl1" runat="server" Visible="false">A</asp:Label>
                 
             </ContentTemplate>
             </asp:UpdatePanel>
+            </div>
+         
     </div>
     </form>
 </body>

@@ -36,69 +36,113 @@ namespace Fractal1
                 Session["blue"] = 200;
             }
 
-
+            System.Threading.Thread.Sleep(500);
+           
 
             // Response.Redirect("Default.aspx");
             if (img1.Src == "Canvass1.aspx")
                 img1.Src = "Canvass2.aspx";
             else
                 img1.Src = "Canvass1.aspx";
-            System.Threading.Thread.Sleep(500);
-            List<string> RGBVals ;
-            var RGBCurrent =/* lbl1.Text =*/ string.Format("Red: {0}, Green{1}, Blue{2}", Session["red"], Session["blue"], Session["green"]);
-            if (Session["RGBVals"] == null)
-                RGBVals = new List<string>();
-            else
-                RGBVals = (List<string>)Session["RGBVals"];
-            var stringFound = RGBVals.Where(p=>p.Contains(RGBCurrent));
-            if (stringFound.Count<string>() == 0)
-                RGBVals.Add(RGBCurrent);
-            Session["RGBVals"] = RGBVals;
+            getNextColor();
             StringBuilder table = new StringBuilder("<table border=1 cellpadding=0 cellspacing=0>");
-            foreach(string RGB   in RGBVals)
-            {
-                table.Append("<tr><td>");
-                if (RGB.Equals(RGBCurrent))
-                {
-                    table.Append("<b>").Append(RGB).Append("</b>");
-                }
-                else
-                {
+            int currentRed = 50, currentGreen = 50, currentBlue = 50;
+            bool isRedSession = int.TryParse(Session["currentRed"].ToString(), out currentRed);
+            bool isGreenSession = int.TryParse(Session["currentGreen"].ToString(), out currentGreen);
+            bool isBlueSession = int.TryParse(Session["currentBlue"].ToString(), out currentBlue);
+            table.Append("<tr><td>");
+            table.Append("Red:").Append(currentRed).Append("</td><td>").Append("Green:").Append(currentGreen).Append("</td><td>").Append("Blue:").Append(currentBlue).Append("</td></tr></table>");
+            Session["red"] = Session["currentRed"];
+            Session["green"] = Session["currentGreen"];
+            Session["blue"] = Session["currentBlue"];
+            //List<string> RGBVals ;
+            //var RGBCurrent =/* lbl1.Text =*/ string.Format("Red: {0}, Green{1}, Blue{2}", Session["red"], Session["blue"], Session["green"]);
+            //if (Session["RGBVals"] == null)
+            //    RGBVals = new List<string>();
+            //else
+            //    RGBVals = (List<string>)Session["RGBVals"];
+            //var stringFound = RGBVals.Where(p=>p.Contains(RGBCurrent));
+            //if (stringFound.Count<string>() == 0)
+            //    RGBVals.Add(RGBCurrent);
+            //Session["RGBVals"] = RGBVals;
+            //StringBuilder table = new StringBuilder("<table border=1 cellpadding=0 cellspacing=0>");
+            //foreach(string RGB   in RGBVals)
+            //{
+            //    table.Append("<tr><td>");
+            //    if (RGB.Equals(RGBCurrent))
+            //    {
+            //        table.Append("<b>").Append(RGB).Append("</b>");
+            //    }
+            //    else
+            //    {
 
-                    table.Append(RGB);
-                }
-                table.Append("</td</tr>");
+            //        table.Append(RGB);
+            //    }
+            //    table.Append("</td</tr>");
                 
-            }
-            table.Append("</table>");
+            //}
+            //table.Append("</table>");
             lbl1.Text = table.ToString();
-           // for (RGBVals.Select<)
-            red = int.Parse(Session["red"].ToString());
-            switch (red)
+                        // for (RGBVals.Select<)
+            //red = int.Parse(Session["red"].ToString());
+            //switch (red)
+            //{
+            //    case 0: Session["red"] = 100; break;
+            //    case 100: Session["red"] = 150; break;
+            //    case 150: Session["red"] = 200; break;
+            //    case 200: Session["red"] = 255; break;
+            //    default: Session["red"] = 0; break;
+            //} green = int.Parse(Session["green"].ToString());
+            //switch (green)
+            //{
+            //    case 0: Session["green"] = 100; break;
+            //    case 100: Session["green"] = 150; break;
+            //    case 150: Session["green"] = 200; break;
+            //    case 200: Session["green"] = 255; break;
+            //    default: Session["green"] = 0; break;
+            //}
+            //blue = int.Parse(Session["blue"].ToString());
+            //switch (blue)
+            //{
+            //    case 0: Session["blue"] = 100; break;
+            //    case 100: Session["blue"] = 150; break;
+            //    case 150: Session["blue"] = 200; break;
+            //    case 200: Session["blue"] = 255; break;
+            //    default: Session["blue"] = 0; break;
+            //}
+        }
+        void getNextColor()
+        {
+            int currentRed = 50, currentGreen = 50, currentBlue = 50;
+            if (Session["currentRed"] != null)
             {
-                case 0: Session["red"] = 100; break;
-                case 100: Session["red"] = 150; break;
-                case 150: Session["red"] = 200; break;
-                case 200: Session["red"] = 255; break;
-                default: Session["red"] = 0; break;
-            } green = int.Parse(Session["green"].ToString());
-            switch (green)
-            {
-                case 0: Session["green"] = 100; break;
-                case 100: Session["green"] = 150; break;
-                case 150: Session["green"] = 200; break;
-                case 200: Session["green"] = 255; break;
-                default: Session["green"] = 0; break;
+                bool isRedSession = int.TryParse(Session["currentRed"].ToString(), out currentRed);
             }
-            blue = int.Parse(Session["blue"].ToString());
-            switch (blue)
+            if (Session["currentGreen"] != null)
             {
-                case 0: Session["blue"] = 100; break;
-                case 100: Session["blue"] = 150; break;
-                case 150: Session["blue"] = 200; break;
-                case 200: Session["blue"] = 255; break;
-                default: Session["blue"] = 0; break;
+                bool isGreenSession = int.TryParse(Session["currentGreen"].ToString(), out currentGreen);
             }
+            if (Session["currentBlue"] != null)
+            {
+                bool isBlueSession = int.TryParse(Session["currentBlue"].ToString(), out currentBlue);
+            }
+            currentBlue += 25;
+            if (currentBlue >  255)
+            {
+                currentBlue = 50;
+                currentGreen+=25;
+                if (currentGreen > 255)
+                {
+                    currentGreen = 50 ;
+                    currentRed+=25;
+                    if (currentRed > 255)
+                        currentRed = 50;
+                }
+            }
+            Session["currentBlue"] = currentBlue;
+            Session["currentGreen"] = currentGreen;
+            Session["currentRed"] = currentRed;
+
         }
         void assignInitialSessionVariables()
         {
