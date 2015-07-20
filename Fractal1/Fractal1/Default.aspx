@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Fractal1._Default" %>
-<%@ Register Src="~/FractalContainer.ascx" TagPrefix="fract" TagName="ctl" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <div style="float:left;border:inset 2px silver; margin-top:50px; width:auto; height:auto;">

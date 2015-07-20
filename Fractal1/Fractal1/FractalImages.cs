@@ -86,7 +86,7 @@ namespace Fractal1
             }
             return retVal;
         }
-        public static Bitmap DrawRandom(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
+        public static Bitmap DrawRandomReversed(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
             FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
@@ -101,7 +101,7 @@ namespace Fractal1
                 for (int y = 0; y < height; y++)
                 {
 
-                    for (int i = 0; i < Palette.Count; i++) // 255 iterations with the method we already wrote
+                    for (int i = Palette.Count-1; i >= 0; i--) // 255 iterations with the method we already wrote
                     {
                         int dividend = (Palette.Count + i - y);
 
@@ -159,8 +159,168 @@ namespace Fractal1
 
             return img.Bitmap;
         }
+        public static Bitmap DrawRandomXDecYInc(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
+        {
+            List<Color> Palette = GenerateColorPalette(r, g, b);
+            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+
+            double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
+            double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
+
+            Random xRand = new Random();
+            Random yRand = new Random();
+            int index = 0;
+            for (int x = width-1; x >= index; x--)
+            {
+                for (int y = 0; y < height;  y++)
+                {
+
+                    for (int i = 0; i< Palette.Count; i++) // 255 iterations with the method we already wrote
+                    {
+                        int palletteIndex = i + ifractalIndex;
+                        if (palletteIndex > 255)
+                            palletteIndex = 0;
+                        int dividend = (Palette.Count + i - y);
+                        int xDisp = x;
+                        if (xDisp > width) xDisp = index;
+                        int yDisp = y;
+                        if (yDisp > height) yDisp = index;
+                        if (dividend != 0)
+                        {
+                            if ((Palette.Count - palletteIndex + x) % dividend < 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 3 && palletteIndex > 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 4 && palletteIndex > 1)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 5 && palletteIndex > 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+
+                        }
+                        else
+                        {
+                            if (palletteIndex == 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (palletteIndex > 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (palletteIndex > 1)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (palletteIndex > 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return img.Bitmap;
+        }
+        public static Bitmap DrawRandomXIncYDec(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
+        {
+            List<Color> Palette = GenerateColorPalette(r, g, b);
+            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+
+            double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
+            double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
+
+            Random xRand = new Random();
+            Random yRand = new Random();
+            int index = 0;
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = height-1; y >=0; y--)
+                {
+
+                    for (int i = 0; i < Palette.Count; i++) // 255 iterations with the method we already wrote
+                    {
+                        int palletteIndex = i + ifractalIndex;
+                        if (palletteIndex > 255)
+                            palletteIndex = 0;
+                        int dividend = (Palette.Count + i - y);
+                        int xDisp = x;
+                        if (xDisp > width) xDisp = index;
+                        int yDisp = y;
+                        if (yDisp > height) yDisp = index;
+                        if (dividend != 0)
+                        {
+                            if ((Palette.Count - palletteIndex + x) % dividend < 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 3 && palletteIndex > 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 4 && palletteIndex > 1)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if ((Palette.Count - palletteIndex + x) % dividend < 5 && palletteIndex > 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+
+                        }
+                        else
+                        {
+                            if (palletteIndex == 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (palletteIndex > 0)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 1]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (palletteIndex > 1)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 2]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                            if (palletteIndex > 2)
+                            {
+                                img.SetPixel(xDisp, yDisp, Palette[palletteIndex - 3]); // Set the pixel if the magnitude is greater than two
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return img.Bitmap;
+        }
         
-        public static Bitmap DrawRandomIndexed(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex=0)
+        public static Bitmap DrawRandomXIncYInc(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex=0)
         {
             List<Color> Palette = GenerateColorPalette(r,g,b);
             FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set

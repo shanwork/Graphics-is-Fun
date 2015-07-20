@@ -36,7 +36,7 @@ namespace Fractal1
             fractalIndex += 10;
             if (fractalIndex > 250)
                 fractalIndex = 0;
-            oCanvas = FractalImages.DrawRandomIndexed(790, 590, 10, 380, 10, 380, red, green, blue, fractalIndex);
+            oCanvas = FractalImages.DrawRandomXIncYInc(790, 590, 10, 380, 10, 380, red, green, blue, fractalIndex);
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();
 
@@ -49,7 +49,7 @@ namespace Fractal1
         {
             Bitmap oCanvas = new Bitmap(500, 450);
             Response.ContentType = "image/jpeg";
-            oCanvas = FractalImages.DrawRandom(390, 390, 10, 380, 10, 380,125,125,255);
+            oCanvas = FractalImages.DrawRandomReversed(390, 390, 10, 380, 10, 380,125,125,255);
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();
 

@@ -41,7 +41,11 @@ namespace Fractal1
 
             // Response.Redirect("Default.aspx");
             if (img1.Src == "Canvass1.aspx")
+                img1.Src = "Canvass1Q1.aspx";
+            else if (img1.Src == "Canvass1Q1.aspx")
                 img1.Src = "Canvass2.aspx";
+            else if (img1.Src == "Canvass2.aspx")
+                img1.Src = "Canvass2Q2.aspx";
             else
                 img1.Src = "Canvass1.aspx";
             getNextColor();

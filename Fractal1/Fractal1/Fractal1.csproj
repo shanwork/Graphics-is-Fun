@@ -164,15 +164,16 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Canvass1.aspx" />
+    <Content Include="Canvass1Q1.aspx" />
     <Content Include="Canvass2.aspx" />
-    <Content Include="CommonCanvassHub.aspx" />
+    <Content Include="Canvass2Q2.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FractalCanvass.aspx" />
-    <Content Include="FractalContainer.ascx" />
+    <Content Include="GraphicDashBoard.aspx" />
     <Content Include="OldDefaultPage.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -351,6 +352,13 @@
     <Compile Include="Canvass1.aspx.designer.cs">
       <DependentUpon>Canvass1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Canvass1Q1.aspx.cs">
+      <DependentUpon>Canvass1Q1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Canvass1Q1.aspx.designer.cs">
+      <DependentUpon>Canvass1Q1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Canvass2.aspx.cs">
       <DependentUpon>Canvass2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -358,12 +366,12 @@
     <Compile Include="Canvass2.aspx.designer.cs">
       <DependentUpon>Canvass2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CommonCanvassHub.aspx.cs">
-      <DependentUpon>CommonCanvassHub.aspx</DependentUpon>
+    <Compile Include="Canvass2Q2.aspx.cs">
+      <DependentUpon>Canvass2Q2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CommonCanvassHub.aspx.designer.cs">
-      <DependentUpon>CommonCanvassHub.aspx</DependentUpon>
+    <Compile Include="Canvass2Q2.aspx.designer.cs">
+      <DependentUpon>Canvass2Q2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -386,16 +394,16 @@
     <Compile Include="FractalCanvass.aspx.designer.cs">
       <DependentUpon>FractalCanvass.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FractalContainer.ascx.cs">
-      <DependentUpon>FractalContainer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FractalContainer.ascx.designer.cs">
-      <DependentUpon>FractalContainer.ascx</DependentUpon>
-    </Compile>
     <Compile Include="FractalImages.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicDashBoard.aspx.cs">
+      <DependentUpon>GraphicDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraphicDashBoard.aspx.designer.cs">
+      <DependentUpon>GraphicDashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="OldDefaultPage.aspx.cs">
