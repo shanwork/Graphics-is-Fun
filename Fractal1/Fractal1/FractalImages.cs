@@ -172,7 +172,7 @@ namespace Fractal1
             int index = 0;
             for (int x = width-1; x >= index; x--)
             {
-                for (int y = 0; y < height;  y++)
+                for (int y = height-1; y >=0;  y--)
                 {
 
                     for (int i = 0; i< Palette.Count; i++) // 255 iterations with the method we already wrote
@@ -319,7 +319,53 @@ namespace Fractal1
 
             return img.Bitmap;
         }
-        
+        public static Bitmap DrawSinGraph(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
+        {
+            List<Color> Palette = GenerateColorPalette(r, g, b);
+            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            Color DrawGraph = Color.FromArgb(255, r, g, b);
+            Color DrawGray = Color.FromArgb(255, 255-r, 255-g, 255-b);
+            
+            double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
+            double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
+
+            Random xRand = new Random();
+            Random yRand = new Random();
+            for (int x1 = 0; x1 < width; x1++)
+            {
+                for (int y1 = 0; y1 < height; y1++)
+                    img.SetPixel(x1, y1, DrawGray);
+            }
+            for (int xM2 = width / 2; xM2 >=0; xM2--)
+            {
+                int x = xM2 - (width / 2);
+                double yF = ((12 * Math.Sin(3 * x) / (1 + Math.Abs(x))) + (double)height / 2.0);
+                double deviation = (double)(height / 2.0 - yF) * 150.0;
+                yF = (double)(height / 2.0) + deviation;
+                if (yF >= 0 && yF < height)
+                    img.SetPixel(xM2, (int)yF, DrawGraph); // Set the pixel if the magnitude is greater than two
+                img.SetPixel(xM2, (int)yF + 1, DrawGraph);
+                img.SetPixel(xM2, (int)yF - 1, DrawGraph);
+
+
+            }
+            for (int xM = width/2; xM < width; xM++)
+            {
+                int x = xM - (width / 2);
+                double yF = ((12 * Math.Sin(3 * x) / (1 + Math.Abs(x))) + (double)height/2.0);
+                double deviation = (double)(height/2.0 - yF )* 150.0 ;
+                yF = (double)(height/2.0) + deviation;
+                if (yF >= 0 && yF < height)
+                img.SetPixel(xM, (int)yF, DrawGraph); // Set the pixel if the magnitude is greater than two
+                img.SetPixel(xM, (int)yF + 1, DrawGraph);
+                img.SetPixel(xM, (int)yF - 1, DrawGraph);
+
+
+            }
+
+            return img.Bitmap;
+        }
+       
         public static Bitmap DrawRandomXIncYInc(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex=0)
         {
             List<Color> Palette = GenerateColorPalette(r,g,b);

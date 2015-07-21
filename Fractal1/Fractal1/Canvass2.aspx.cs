@@ -24,7 +24,7 @@ namespace Fractal1
             bool greenYes = int.TryParse(Session["green"].ToString(), out green);
             bool blueYes = int.TryParse(Session["blue"].ToString(), out blue);
 
-            Bitmap oCanvas = new Bitmap(800, 600);
+            Bitmap oCanvas = new Bitmap(500, 450);
             Response.ContentType = "image/jpeg";
             int fractalIndex = 0;
             if (Session["FractalIndex"] != null)
@@ -35,7 +35,7 @@ namespace Fractal1
             fractalIndex+=10;
             if (fractalIndex > 250)
                 fractalIndex = 0;
-            oCanvas = FractalImages.DrawRandomXIncYInc(790, 590, 10, 380, 10, 380, red, green, blue, fractalIndex);
+            oCanvas = FractalImages.DrawRandomXIncYInc(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
             
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();

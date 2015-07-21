@@ -167,6 +167,7 @@
     <Content Include="Canvass1Q1.aspx" />
     <Content Include="Canvass2.aspx" />
     <Content Include="Canvass2Q2.aspx" />
+    <Content Include="Canvass3.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -372,6 +373,13 @@
     </Compile>
     <Compile Include="Canvass2Q2.aspx.designer.cs">
       <DependentUpon>Canvass2Q2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Canvass3.aspx.cs">
+      <DependentUpon>Canvass3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Canvass3.aspx.designer.cs">
+      <DependentUpon>Canvass3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
