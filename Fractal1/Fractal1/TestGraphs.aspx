@@ -3,6 +3,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="graphContainer" style="margin:20px;border solid 2 px silver; "> 
-    <Graph:TargetActual ID="SalesGraph" GraphBackground="250,210,230" TicksAndAxisColor="0,230,100" runat="server"  />
+    <Graph:TargetActual ID="SalesGraph" GraphBackground="210,230,250" TicksAndAxisColor="0,30,100" runat="server"  />
         </div>
 </asp:Content>
