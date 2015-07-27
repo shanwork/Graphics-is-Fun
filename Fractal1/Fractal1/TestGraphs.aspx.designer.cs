@@ -19,6 +19,6 @@ namespace Fractal1 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Fractal1.GraphContainer SalesGraph;
+        protected global::Fractal1.TargetActualGraphContainer SalesGraph;
     }
 }

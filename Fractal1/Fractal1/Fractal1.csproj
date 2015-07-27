@@ -175,7 +175,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FractalCanvass.aspx" />
-    <Content Include="GraphContainer.ascx" />
+    <Content Include="TargetActualGraphContainer.ascx" />
     <Content Include="GraphicDashBoard.aspx" />
     <Content Include="OldDefaultPage.aspx" />
     <Content Include="packages.config" />
@@ -419,12 +419,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GraphContainer.ascx.cs">
-      <DependentUpon>GraphContainer.ascx</DependentUpon>
+    <Compile Include="TargetActualGraphContainer.ascx.cs">
+      <DependentUpon>TargetActualGraphContainer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GraphContainer.ascx.designer.cs">
-      <DependentUpon>GraphContainer.ascx</DependentUpon>
+    <Compile Include="TargetActualGraphContainer.ascx.designer.cs">
+      <DependentUpon>TargetActualGraphContainer.ascx</DependentUpon>
     </Compile>
     <Compile Include="GraphicDashBoard.aspx.cs">
       <DependentUpon>GraphicDashBoard.aspx</DependentUpon>

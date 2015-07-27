@@ -42,9 +42,9 @@ namespace Fractal1
             ticksAndAxisRed = 0;
             ticksAndAxisGreen = 0;
             ticksAndAxisBlue = 0;
-            if (Session["TicksAndAxis"] != null)
+            if (Session["TicksAndAxisColor"] != null)
             {
-                string[] ticksAndAxisRDBValues = Session["TicksAndAxis"].ToString().Split(',');
+                string[] ticksAndAxisRDBValues = Session["TicksAndAxisColor"].ToString().Split(',');
                 if (ticksAndAxisRDBValues.Length == 3)
                 {
                     bool tRed = int.TryParse(ticksAndAxisRDBValues[0], out ticksAndAxisRed);
@@ -215,7 +215,7 @@ namespace Fractal1
         //                ((x % xTickIntervals == 0 || (x + 1) % xTickIntervals == 0) && (y > yAxis[1] && y < bitmapHeight - 6))
         //              || ((y % yTickIntervals == 0 || (y + 1) % yTickIntervals == 0) && (x > 5 && x < xAxis[1]) && y < yAxis[0]))
         //            {
-        //                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, ticksAndAxisRed,ticksAndAxisGreen,tickAndAxisBlue));
+        //                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, TicksAndAxisBackgroundBackgroundRed,TicksAndAxisBackgroundBackgroundGreen,tickAndAxisBlue));
         //            }
         //            else if (x % xTickIntervals == 0 ||
         //                      (x + 1) % xTickIntervals == 0 ||
@@ -287,7 +287,7 @@ namespace Fractal1
         //            //  //    || ((y%yTickIntervals == 0||(y+1)%yTickIntervals==0) && (x > 2 && x < 12))
         //            //      )
         //            {
-        //                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, ticksAndAxisRed,ticksAndAxisGreen,tickAndAxisBlue));
+        //                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, TicksAndAxisBackgroundBackgroundRed,ticksAndAxisGreen,tickAndAxisBlue));
         //            }
         //            //else if ( x%xTickIntervals == 0||
         //            //          (x+1)%xTickIntervals==0||

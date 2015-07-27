@@ -63,7 +63,7 @@
            <div style="float:left;border:inset 2px silver; margin-bottom:5px; width:auto; height:auto;">
             Welcome to my website.. to see trials and Proof of concepts on graphics, these are POCs which I am in the process of developing, and refining
             <ul> * <a href="GraphicDashBoard.aspx"> Fractals with changing colors and an attempt to a sinusoidal curse</a></ul>
-            <ul>* <a href="TestGraphs.aspx">Bar Graph</a></ul>
+            <ul>* <a href="TestGraphs.aspx">Bar Graph for showing targetted versus actual quantities</a></ul>
              This is a proof of concept, iteratively evolving graphics page highlighting how asp.net pages can be used to render graphics content.
            
             Inspired by the article <a href="http://www.codemag.com/Article/03050801" target="_top">Using GDI+ in Asp.Net </a> by Markus Egger
