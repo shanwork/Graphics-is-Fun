@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Fractal1.Core;
 
 namespace Fractal1
 {
@@ -26,7 +27,7 @@ namespace Fractal1
 
             Bitmap oCanvas = new Bitmap(500, 450);
             Response.ContentType = "image/jpeg";
-          //  oCanvas = FractalImages.DrawRandom(790, 590, 10, 380, 10, 380, red, green, blue);
+          //  oCanvas = FractalElements.DrawRandom(790, 590, 10, 380, 10, 380, red, green, blue);
             int fractalIndex = 0;
             if (Session["FractalIndex"] != null)
             {
@@ -36,7 +37,7 @@ namespace Fractal1
             fractalIndex += 10;
             if (fractalIndex > 250)
                 fractalIndex = 0;
-            oCanvas = FractalImages.DrawRandomXIncYInc(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
+            oCanvas = FractalElements.DrawRandomXIncYInc(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();
 
@@ -49,7 +50,7 @@ namespace Fractal1
         {
             Bitmap oCanvas = new Bitmap(500, 450);
             Response.ContentType = "image/jpeg";
-            oCanvas = FractalImages.DrawRandomReversed(390, 390, 10, 380, 10, 380,125,125,255);
+            oCanvas = FractalElements.DrawRandomReversed(390, 390, 10, 380, 10, 380,125,125,255);
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();
 

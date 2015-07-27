@@ -163,6 +163,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="aspx_graphics.aspx" />
     <Content Include="Canvass1.aspx" />
     <Content Include="Canvass1Q1.aspx" />
     <Content Include="Canvass2.aspx" />
@@ -174,6 +175,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FractalCanvass.aspx" />
+    <Content Include="GraphContainer.ascx" />
     <Content Include="GraphicDashBoard.aspx" />
     <Content Include="OldDefaultPage.aspx" />
     <Content Include="packages.config" />
@@ -216,6 +218,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="TestGraphCanvass.aspx" />
+    <Content Include="TestGraphs.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -346,6 +350,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="aspx_graphics.aspx.cs">
+      <DependentUpon>aspx_graphics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx_graphics.aspx.designer.cs">
+      <DependentUpon>aspx_graphics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessLayer\SalesData.cs" />
     <Compile Include="Canvass1.aspx.cs">
       <DependentUpon>Canvass1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -388,6 +400,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Core\GraphicsEngine.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -405,6 +418,13 @@
     <Compile Include="FractalImages.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GraphContainer.ascx.cs">
+      <DependentUpon>GraphContainer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraphContainer.ascx.designer.cs">
+      <DependentUpon>GraphContainer.ascx</DependentUpon>
     </Compile>
     <Compile Include="GraphicDashBoard.aspx.cs">
       <DependentUpon>GraphicDashBoard.aspx</DependentUpon>
@@ -437,6 +457,20 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TestGraphCanvass.aspx.cs">
+      <DependentUpon>TestGraphCanvass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestGraphCanvass.aspx.designer.cs">
+      <DependentUpon>TestGraphCanvass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestGraphs.aspx.cs">
+      <DependentUpon>TestGraphs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestGraphs.aspx.designer.cs">
+      <DependentUpon>TestGraphs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

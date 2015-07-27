@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Fractal1.Core;
 
 namespace Fractal1
 {
@@ -35,7 +36,7 @@ namespace Fractal1
             fractalIndex+=10;
             if (fractalIndex > 250)
                 fractalIndex = 0;
-            oCanvas = FractalImages.DrawRandomXIncYInc(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
+            oCanvas = FractalElements.DrawRandomXIncYInc(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
             
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();
@@ -65,10 +66,10 @@ namespace Fractal1
             switch (fractalIndex)
             {
                 case 0:
-                    oCanvas = FractalImages.DrawRandomReversed(390, 390, 10, 380, 10, 380, 125, 125, 255);
+                    oCanvas = FractalElements.DrawRandomReversed(390, 390, 10, 380, 10, 380, 125, 125, 255);
                     break;
                 case 1:
-                    oCanvas = FractalImages.DrawRandom2(390, 390, 10, 380, 10, 380, 125, 125, 255);
+                    oCanvas = FractalElements.DrawRandom2(390, 390, 10, 380, 10, 380, 125, 125, 255);
                     break;
             }
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
@@ -92,7 +93,7 @@ namespace Fractal1
     //    {
     //        Bitmap oCanvas = new Bitmap(500, 450);
     //        Response.ContentType = "image/jpeg";
-    //        oCanvas = FractalImages.DrawRandom2(790, 590, 10, 380, 10, 380, 0, 255, 0);
+    //        oCanvas = FractalElements.DrawRandom2(790, 590, 10, 380, 10, 380, 0, 255, 0);
     //        oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
     //        Response.End();
 
@@ -109,7 +110,7 @@ namespace Fractal1
 
     //        Bitmap oCanvas = new Bitmap(500, 450);
     //        Response.ContentType = "image/jpeg";
-    //        oCanvas = FractalImages.DrawRandom2(790, 590, 10, 380, 10, 380, red, green, blue);
+    //        oCanvas = FractalElements.DrawRandom2(790, 590, 10, 380, 10, 380, red, green, blue);
     //        oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
     //        Response.End();
 

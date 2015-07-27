@@ -7,9 +7,9 @@ using System.Drawing.Imaging;
 
 namespace Fractal1
 {
-    public class FastBitmap
+    public class FastBitmapTemp
     {
-        public FastBitmap(int width, int height)
+        public FastBitmapTemp(int width, int height)
         {
             this.Bitmap = new Bitmap(width, height, PixelFormat.Format24bppRgb);
         }
@@ -89,7 +89,7 @@ namespace Fractal1
         public static Bitmap DrawRandomReversed(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
@@ -162,7 +162,7 @@ namespace Fractal1
         public static Bitmap DrawRandomXDecYInc(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
@@ -242,7 +242,7 @@ namespace Fractal1
         public static Bitmap DrawRandomXIncYDec(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
@@ -322,7 +322,7 @@ namespace Fractal1
         public static Bitmap DrawSinGraph(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
             Color DrawGraph = Color.FromArgb(255, r, g, b);
             Color DrawGray = Color.FromArgb(255, 255-r, 255-g, 255-b);
             
@@ -369,7 +369,7 @@ namespace Fractal1
         public static Bitmap DrawRandomXIncYInc(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex=0)
         {
             List<Color> Palette = GenerateColorPalette(r,g,b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
@@ -449,7 +449,7 @@ namespace Fractal1
         public static Bitmap DrawRandom2(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
@@ -522,7 +522,7 @@ namespace Fractal1
         public static Bitmap DrawRandom2Broken(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
             List<Color> Palette = GenerateColorPalette(g, b, r);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
@@ -578,7 +578,7 @@ namespace Fractal1
         public static Bitmap DrawMandelbrot(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0)
         {
             List<Color> Palette = GenerateColorPalette(r,g,b);
-            FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
+            FastBitmapTemp img = new FastBitmapTemp(width, height); // Bitmap to contain the set
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
