@@ -21,6 +21,7 @@ namespace Fractal1
         int belowTargetRed,  belowTargetGreen, belowTargetBlue ;
         int exceedTargetRed, exceedTargetGreen, exceedTargetBlue ;
         int fallShortTargetRed, fallShortTargetGreen, fallShortTargetBlue ;
+        int barThickness;
         protected void Page_Load(object sender, EventArgs e)
         {
             SetValues();
@@ -95,6 +96,11 @@ namespace Fractal1
                     bool fstBlue = int.TryParse(fallShortTargetRGBValues[2], out fallShortTargetBlue);
                 }
             }
+            barThickness = 10;
+            if (Session["BarThickness"] != null)
+            {
+                bool bThickness = int.TryParse(Session["BarThickness"].ToString(), out barThickness);
+            }
         }
         protected void RenderGraph()
         {
@@ -143,12 +149,141 @@ namespace Fractal1
                 {
                     for (int y = 1; y < (bitmapHeight - 1); y++)
                     {
+                        // draw the default base background ...
+                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
+                            
+                        // processing the ticks and axes
                         if ((y >= yAxis[0] && y < yAxis[1]) ||
                             (x >= xAxis[0] && x < xAxis[1]) ||
                             ((x % xTickIntervals == 0 || (x + 1) % xTickIntervals == 0) && (y > yAxis[1] && y < bitmapHeight - 6))
                           || ((y % yTickIntervals == 0 || (y + 1) % yTickIntervals == 0) && (x > 5 && x < xAxis[1]) && y < yAxis[0]))
                         {
-                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, axesRedValue,axesGreenValue,axesBlueValue));
+                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, axesRedValue, axesGreenValue, axesBlueValue));
+                        }
+                        // actual data values - bar drawing
+                        else
+                        {
+                            for (int bt = 0; bt < barThickness / 2; bt++)
+                            {
+                                if (x > xAxis[1])
+                                {
+                                    if ((x - bt) % xTickIntervals == 0 || (x + bt) % xTickIntervals == 0)
+                                    {
+                                        int xMultiple = (x - bt) % xTickIntervals == 0 ? (x - bt) / xTickIntervals :
+                                                 (x + bt) / xTickIntervals;
+                                        xMultiple--;
+                                        if (dtRegionSalesByUnits.Rows.Count > xMultiple && y < yAxis[1])
+                                        {
+                                            targetedAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["TargetSalesUnits"]) / 1000;
+                                            actualAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["SoldUnits"]) / 1000;
+                                            // falls short
+                                            if (targetedAmount <= actualAmount)
+                                            {
+                                                if ((y + 1) > yAxis[1] - (targetedAmount * 10) && y < yAxis[1])
+                                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, belowTargetRed, belowTargetGreen, belowTargetBlue));
+                                                if (targetedAmount < actualAmount)
+                                                {
+                                                    if (y >= yAxis[1] - actualAmount * 10 && y < yAxis[1] - targetedAmount * 10)
+                                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, exceedTargetRed, exceedTargetGreen, exceedTargetBlue));
+
+
+                                                }
+                                                if (y < yAxis[1] - actualAmount * 10)
+                                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
+
+
+                                                //if (targetedAmount == actualAmount && y <  yAxis[1] - targetedAmount)
+                                                //    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
+
+
+                                            }
+                                            else
+                                            {
+                                                if ((y + 1) > yAxis[1] - (targetedAmount) * 10 && y < yAxis[1] - actualAmount * 10)
+                                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, fallShortTargetRed, fallShortTargetGreen, fallShortTargetBlue));
+                                                if (y >= yAxis[1] - actualAmount * 10 && y < yAxis[1])
+                                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, belowTargetRed, belowTargetGreen, belowTargetBlue));
+                                                if (y < yAxis[1] - targetedAmount * 10)
+                                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
+
+                                            }
+                                            if (y == yAxis[1] - targetedAmount * 10 ||
+                                                (y + 1) == yAxis[1] - targetedAmount * 10)
+                                                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, targetLevelRed, targetLevelGreen, targetLevelBlue));
+
+
+                                        }
+                                    }
+                                   
+                                    
+                                }
+                                //else 
+                                //    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
+
+
+                            }
+                        } 
+                         }
+                }
+                oCanvas = GraphicsEngine.DrawImage(bitmapWidth, bitmapHeight, CanvassPoints);
+                oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
+                oCanvas.Dispose();
+            }
+        }
+        #region previousIterations
+        protected void RenderGraphHardCodedBarThickness()
+        {
+            // getting the data..
+
+
+            DataTable dtRegionSalesByUnits = SalesData.getRegionSalesUnitsData();
+
+
+            var regionSalesEnumreable = dtRegionSalesByUnits.AsEnumerable();
+            var maxTarget = (
+                    from row in regionSalesEnumreable
+                    select row.Field<string>(2)).Max();
+            var maxSales = (from row in regionSalesEnumreable
+                            select row.Field<string>(3)).Max();
+            // legitimizing and finding boundary values to set the graph ticks
+            int maxSalesInt = 0, maxTargetInt = 0;// (string)maxTarget > (int)maxSales ? (int)maxTarget : (int)maxSales + 1000;
+            bool maxSalesBool = int.TryParse(maxSales.ToString(), out maxSalesInt);
+            bool maxTargetBool = int.TryParse(maxTarget.ToString(), out maxTargetInt);
+            float quantityToPixel = 0;
+            // legitimate data.. so we proceed to draw the graph...
+            if (maxSalesBool && maxTargetBool)
+            {
+                int numXTicks = dtRegionSalesByUnits.Rows.Count + 2;
+                int numYTicks = 10;
+                int unitY = 1000;
+                int bitmapWidth = 590, bitmapHeight = 490;
+
+                // factor as to one pixel represents how much quantity
+                quantityToPixel = (((maxSalesInt > maxTargetInt ? maxSalesInt : maxTargetInt) + 1000) / unitY)
+                    / (bitmapHeight - 19);
+                // number of Y ticks
+                numYTicks = ((maxSalesInt > maxTargetInt ? maxSalesInt : maxTargetInt) + 1000) / unitY;
+
+                Bitmap oCanvas = new Bitmap(bitmapWidth, bitmapHeight);
+                int xTickIntervals = (bitmapWidth - 2) / numXTicks;
+                int yTickIntervals = (bitmapHeight - 2) / numYTicks;
+                int[] yAxis = { bitmapHeight - 18, bitmapHeight - 15 };
+
+                int[] xAxis = { 15, 18 };
+
+                Response.ContentType = "image/jpeg";
+                List<Tuple<int, int, int, int, int>> CanvassPoints = new List<Tuple<int, int, int, int, int>>();
+                int targetedAmount = 0, actualAmount = 0;
+                for (int x = 1; x < (bitmapWidth - 1); x++)
+                {
+                    for (int y = 1; y < (bitmapHeight - 1); y++)
+                    {
+                        if ((y >= yAxis[0] && y < yAxis[1]) ||
+                            (x >= xAxis[0] && x < xAxis[1]) ||
+                            ((x % xTickIntervals == 0 || (x + 1) % xTickIntervals == 0) && (y > yAxis[1] && y < bitmapHeight - 6))
+                          || ((y % yTickIntervals == 0 || (y + 1) % yTickIntervals == 0) && (x > 5 && x < xAxis[1]) && y < yAxis[0]))
+                        {
+                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, axesRedValue, axesGreenValue, axesBlueValue));
                         }
                         else if ((x > xAxis[1]) && (x % xTickIntervals == 0 ||
                                   (x + 1) % xTickIntervals == 0 ||
@@ -172,47 +307,47 @@ namespace Fractal1
                                 targetedAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["TargetSalesUnits"]) / 1000;
                                 actualAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["SoldUnits"]) / 1000;
                                 // falls short
-                                if (targetedAmount <=actualAmount)
+                                if (targetedAmount <= actualAmount)
                                 {
                                     if ((y + 1) > yAxis[1] - (targetedAmount * 10) && y < yAxis[1])
                                         CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, belowTargetRed, belowTargetGreen, belowTargetBlue));
                                     if (targetedAmount < actualAmount)
                                     {
-                                        if (y >= yAxis[1] - actualAmount*10 && y < yAxis[1] - targetedAmount * 10)
+                                        if (y >= yAxis[1] - actualAmount * 10 && y < yAxis[1] - targetedAmount * 10)
                                             CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, exceedTargetRed, exceedTargetGreen, exceedTargetBlue));
-                                         
-                                        
+
+
                                     }
                                     if (y < yAxis[1] - actualAmount * 10)
-                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
-                                        
-                                    
+                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
+
+
                                     //if (targetedAmount == actualAmount && y <  yAxis[1] - targetedAmount)
                                     //    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
-                                    
-                                    
+
+
                                 }
                                 else
                                 {
-                                    if ((y+1) >  yAxis[1] - (targetedAmount) * 10 && y < yAxis[1] - actualAmount * 10)
+                                    if ((y + 1) > yAxis[1] - (targetedAmount) * 10 && y < yAxis[1] - actualAmount * 10)
                                         CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, fallShortTargetRed, fallShortTargetGreen, fallShortTargetBlue));
-                                    if (y >= yAxis[1] - actualAmount * 10 && y < yAxis[1] )
+                                    if (y >= yAxis[1] - actualAmount * 10 && y < yAxis[1])
                                         CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, belowTargetRed, belowTargetGreen, belowTargetBlue));
                                     if (y < yAxis[1] - targetedAmount * 10)
-                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
-                                      
+                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
+
                                 }
                                 if (y == yAxis[1] - targetedAmount * 10 ||
                                     (y + 1) == yAxis[1] - targetedAmount * 10)
                                     CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, targetLevelRed, targetLevelGreen, targetLevelBlue));
-                                
+
 
                             }
                             else
-                                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
+                                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
                         }
                         else
-                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
+                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, backgroundRed, backgroundGreen, backgroundBlue));
                     }
                 }
                 oCanvas = GraphicsEngine.DrawImage(bitmapWidth, bitmapHeight, CanvassPoints);
@@ -220,7 +355,6 @@ namespace Fractal1
                 oCanvas.Dispose();
             }
         }
-
         //protected void RenderRegionSalesByUnitsGraphHardCodeValues()
         //{
         //    DataTable dtRegionSalesByUnits = SalesData.getRegionSalesUnitsData();
@@ -381,6 +515,6 @@ namespace Fractal1
         //    oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
         //    oCanvas.Dispose();
         //}
-
+        #endregion
     }
 }

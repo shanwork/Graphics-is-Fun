@@ -21,6 +21,7 @@ namespace Fractal1
         public string BelowTargetColor { get; set; }
         public string ExceedTargetColor { get; set; }
         public string FallShortTargetColor { get; set; }
+        public string BarThickness { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +31,7 @@ namespace Fractal1
             Session["BelowTargetColor"] = BelowTargetColor;
             Session["ExceedTargetColor"] = ExceedTargetColor;
             Session["FallShortTargetColor"] = FallShortTargetColor;
+            Session["BarThickness"] = BarThickness;
         }
     }
 }
