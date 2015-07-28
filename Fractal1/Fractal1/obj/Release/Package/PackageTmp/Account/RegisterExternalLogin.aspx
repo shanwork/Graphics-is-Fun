@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Register an external login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="Fractal1.Account.RegisterExternalLogin" Async="true" %>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="CanvassHolder">
 <h3>Register with your <%: ProviderName %> account</h3>
 
     <asp:PlaceHolder runat="server">

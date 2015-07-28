@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GraphicDashBoard.aspx.cs" Inherits="Fractal1.GraphicDashBoard" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="CanvassHolder" runat="server">
    
     <div>
          <asp:UpdatePanel ID="test" runat="server">

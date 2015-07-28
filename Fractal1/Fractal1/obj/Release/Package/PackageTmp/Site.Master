@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - My Server Side Graphics Sandbox</title>
    
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -59,8 +59,8 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
-           <div style="float:left;border:inset 2px silver; margin-bottom:5px; width:auto; height:auto;">
+        <div class="container body-content" style="border:5px inset;padding:20px; margin-top:10px;background-color:rgb(200,210,255);">
+           <div style="float:left;border:outset 3px silver; margin-bottom:5px; width:auto; height:auto;background-color:rgb(220,240,255);padding:5px;">
             Welcome to my website.. to see trials and Proof of concepts on graphics, these are POCs which I am in the process of developing, and refining
             <ul> * <a href="GraphicDashBoard.aspx"> Fractals with changing colors and an attempt to a sinusoidal curse</a></ul>
             <ul>* <a href="TestGraphs.aspx">Bar Graph for showing targetted versus actual quantities</a></ul>
@@ -70,8 +70,9 @@
             Source for this app is under <a href="https://github.com/shanwork/Graphics-is-Fun" target="_blank">here</a>
             Please feel free to email me at champgads@gmail.com
          
-        </div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </div><p></p>
+           
+            <asp:ContentPlaceHolder ID="CanvassHolder" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             
