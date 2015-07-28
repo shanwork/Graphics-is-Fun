@@ -16,15 +16,20 @@ namespace Fractal1
     public partial class TargetActualGraphContainer : System.Web.UI.UserControl
     {
         public string GraphBackground { get; set; }
-        public string TicksAndAxisColor { get; set; }
+        public string AxesColor { get; set; }
         public string TargetLevelColor { get; set; }
         public string BelowTargetColor { get; set; }
         public string ExceedTargetColor { get; set; }
         public string FallShortTargetColor { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["GraphBackground"] = GraphBackground;
-            Session["TicksAndAxisColor"] = TicksAndAxisColor;
+            Session["AxesColor"] = AxesColor;
+            Session["TargetLevelColor"] = TargetLevelColor;
+            Session["BelowTargetColor"] = BelowTargetColor;
+            Session["ExceedTargetColor"] = ExceedTargetColor;
+            Session["FallShortTargetColor"] = FallShortTargetColor;
         }
     }
 }

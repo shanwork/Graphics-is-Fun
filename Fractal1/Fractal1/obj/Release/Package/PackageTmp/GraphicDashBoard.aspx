@@ -17,7 +17,7 @@
                <td> 
                    <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px silver; width:auto; height:auto;">
         
-                <img id="img1" src="Canvass1.aspx" runat="server"  />
+                <img id="img1" src="FractalCanvass1.aspx" runat="server"  />
                 <asp:Label ID="lbl1" runat="server" Visible="false">A</asp:Label>
                 
           
@@ -26,7 +26,7 @@
                <td>   
                    <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px silver; width:auto; height:auto;">
          
-                <img id="img2" src="Canvass1Q1.aspx" runat="server"  />
+                <img id="img2" src="FractalCanvass3.aspx" runat="server"  />
                 <asp:Label ID="Label1" runat="server" Visible="false">A</asp:Label>
                 
             
@@ -35,7 +35,7 @@
       <tr>
                <td> 
                    <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px gray; width:auto; height:auto;">
-        <img id="img3" src="Canvass3.aspx" runat="server"  />
+        <img id="img3" src="TrigoGraph.aspx" runat="server"  />
                 
                  
                 

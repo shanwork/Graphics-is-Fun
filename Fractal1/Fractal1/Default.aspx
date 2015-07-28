@@ -9,7 +9,7 @@
               </Triggers>
             <ContentTemplate>
                 <asp:Timer ID="tmr" runat="server" OnTick="tmr_Tick" Interval="1500" ></asp:Timer>
-                <img id="img1" src="Canvass3.aspx" runat="server"  />
+                <img id="img1" src="TrigoGraph.aspx" runat="server"  />
                 <asp:Label ID="lbl1" runat="server" Visible="false">A</asp:Label>
                 
             </ContentTemplate>

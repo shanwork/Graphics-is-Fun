@@ -10,6 +10,6 @@
 namespace Fractal1 {
     
     
-    public partial class GraphCanvass {
+    public partial class TrigoGraph {
     }
 }

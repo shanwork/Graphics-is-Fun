@@ -40,14 +40,14 @@ namespace Fractal1
 
 
             // Response.Redirect("Default.aspx");
-            //if (img1.Src == "Canvass1.aspx")
-            //    img1.Src = "Canvass1Q1.aspx";
-            //else if (img1.Src == "Canvass1Q1.aspx")
-            //    img1.Src = "Canvass2.aspx";
-            //else if (img1.Src == "Canvass2.aspx")
-            //    img1.Src = "Canvass2Q2.aspx";
+            //if (img1.Src == "FractalCanvass1.aspx")
+            //    img1.Src = "FractalCanvass3.aspx";
+            //else if (img1.Src == "FractalCanvass3.aspx")
+            //    img1.Src = "FractalCanvass2.aspx";
+            //else if (img1.Src == "FractalCanvass2.aspx")
+            //    img1.Src = "FractalCanvass4.aspx";
             //else
-            //    img1.Src = "Canvass1.aspx";
+            //    img1.Src = "FractalCanvass1.aspx";
             getNextColor();
             StringBuilder table = new StringBuilder("<table border=1 cellpadding=0 cellspacing=0>");
             int currentRed = 50, currentGreen = 50, currentBlue = 50;

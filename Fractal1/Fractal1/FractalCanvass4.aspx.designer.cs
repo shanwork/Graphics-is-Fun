@@ -10,6 +10,6 @@
 namespace Fractal1 {
     
     
-    public partial class Canvass1 {
+    public partial class FractalCanvass4 {
     }
 }

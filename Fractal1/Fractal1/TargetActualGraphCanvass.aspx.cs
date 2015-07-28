@@ -13,11 +13,14 @@ using Fractal1.BusinessLayer;
 
 namespace Fractal1
 {
-    public partial class GraphCanvass : System.Web.UI.Page
+    public partial class TargetActualGraphCanvass : System.Web.UI.Page
     {
         int backgroundRed, backgroundGreen, backgroundBlue;
-        int ticksAndAxisRed, ticksAndAxisGreen, ticksAndAxisBlue;
-
+        int axesRedValue, axesGreenValue, axesBlueValue;
+        int targetLevelRed, targetLevelGreen, targetLevelBlue ;
+        int belowTargetRed,  belowTargetGreen, belowTargetBlue ;
+        int exceedTargetRed, exceedTargetGreen, exceedTargetBlue ;
+        int fallShortTargetRed, fallShortTargetGreen, fallShortTargetBlue ;
         protected void Page_Load(object sender, EventArgs e)
         {
             SetValues();
@@ -25,10 +28,7 @@ namespace Fractal1
         }
         void SetValues()
         {
-            backgroundRed=220;
-            backgroundGreen=220;
-            backgroundBlue = 220;
-            
+            backgroundRed= backgroundGreen= backgroundBlue = 220;
             if (Session["GraphBackground"] != null)
             {
                 string[] backgroundRDBValues = Session["GraphBackground"].ToString().Split(',');
@@ -39,17 +39,60 @@ namespace Fractal1
                     bool bBlue = int.TryParse(backgroundRDBValues[2], out backgroundBlue);
                 }
             }
-            ticksAndAxisRed = 0;
-            ticksAndAxisGreen = 0;
-            ticksAndAxisBlue = 0;
-            if (Session["TicksAndAxisColor"] != null)
+
+            axesRedValue =  axesGreenValue =  axesBlueValue = 0;
+            if (Session["AxesColor"] != null)
             {
-                string[] ticksAndAxisRDBValues = Session["TicksAndAxisColor"].ToString().Split(',');
+                string[] ticksAndAxisRDBValues = Session["AxesColor"].ToString().Split(',');
                 if (ticksAndAxisRDBValues.Length == 3)
                 {
-                    bool tRed = int.TryParse(ticksAndAxisRDBValues[0], out ticksAndAxisRed);
-                    bool tGreen = int.TryParse(ticksAndAxisRDBValues[1], out ticksAndAxisGreen);
-                    bool tBlue = int.TryParse(ticksAndAxisRDBValues[2], out ticksAndAxisBlue);
+                    bool tRed = int.TryParse(ticksAndAxisRDBValues[0], out axesRedValue);
+                    bool tGreen = int.TryParse(ticksAndAxisRDBValues[1], out axesGreenValue);
+                    bool tBlue = int.TryParse(ticksAndAxisRDBValues[2], out axesBlueValue);
+                }
+            }
+            targetLevelRed = 0; targetLevelGreen = 180; targetLevelBlue = 10;
+            if (Session["TargetLevelColor"] != null)
+            {
+                string[] targetLevelRGBValues = Session["TargetLevelColor"].ToString().Split(',');
+                if (targetLevelRGBValues.Length == 3)
+                {
+                    bool tgRed = int.TryParse(targetLevelRGBValues[0], out targetLevelRed);
+                    bool tgGreen = int.TryParse(targetLevelRGBValues[1], out targetLevelGreen);
+                    bool tgBlue = int.TryParse(targetLevelRGBValues[2], out targetLevelBlue);
+                }
+            }
+            belowTargetRed = 0; belowTargetGreen = 10; belowTargetBlue = 180;
+            if (Session["BelowTargetColor"] != null)
+            {
+                string[] belowTargetRGBValues = Session["BelowTargetColor"].ToString().Split(',');
+                if (belowTargetRGBValues.Length == 3)
+                {
+                    bool btRed = int.TryParse(belowTargetRGBValues[0], out belowTargetRed);
+                    bool btGreen = int.TryParse(belowTargetRGBValues[1], out belowTargetGreen);
+                    bool btBlue = int.TryParse(belowTargetRGBValues[2], out belowTargetBlue);
+                }
+            }
+            exceedTargetRed = 0; exceedTargetGreen = 250; exceedTargetBlue = 100;
+            if (Session["ExceedTargetColor"] != null)
+            {
+                string[] exceedTargetRGBValues = Session["ExceedTargetColor"].ToString().Split(',');
+                if (exceedTargetRGBValues.Length == 3)
+                {
+                    bool etRed = int.TryParse(exceedTargetRGBValues[0], out exceedTargetRed);
+                    bool etGreen = int.TryParse(exceedTargetRGBValues[1], out exceedTargetGreen);
+                    bool etBlue = int.TryParse(exceedTargetRGBValues[2], out exceedTargetBlue);
+                }
+            }
+            fallShortTargetRed = 250; fallShortTargetGreen = 150; fallShortTargetBlue = 50;
+            if (Session["FallShortTargetColor"] != null)
+            {
+                string[] fallShortTargetRGBValues = Session["FallShortTargetColor"].ToString().Split(',');
+                if (fallShortTargetRGBValues.Length == 3)
+                {
+                    bool fstRed = int.TryParse(fallShortTargetRGBValues[0], out fallShortTargetRed);
+                    bool fstGreen = int.TryParse(fallShortTargetRGBValues[1], out fallShortTargetGreen);
+                    bool fstBlue = int.TryParse(fallShortTargetRGBValues[2], out fallShortTargetBlue);
                 }
             }
         }
@@ -105,7 +148,7 @@ namespace Fractal1
                             ((x % xTickIntervals == 0 || (x + 1) % xTickIntervals == 0) && (y > yAxis[1] && y < bitmapHeight - 6))
                           || ((y % yTickIntervals == 0 || (y + 1) % yTickIntervals == 0) && (x > 5 && x < xAxis[1]) && y < yAxis[0]))
                         {
-                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, ticksAndAxisRed,ticksAndAxisGreen,ticksAndAxisBlue));
+                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, axesRedValue,axesGreenValue,axesBlueValue));
                         }
                         else if ((x > xAxis[1]) && (x % xTickIntervals == 0 ||
                                   (x + 1) % xTickIntervals == 0 ||
@@ -126,16 +169,17 @@ namespace Fractal1
                             xMultiple--;
                             if (dtRegionSalesByUnits.Rows.Count > xMultiple && y < yAxis[1])
                             {
-                                targetedAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["RegionTargetSalesUnits"]) / 1000;
-                                actualAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["RegionSoldUnits"]) / 1000;
+                                targetedAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["TargetSalesUnits"]) / 1000;
+                                actualAmount = Convert.ToInt32(dtRegionSalesByUnits.Rows[xMultiple]["SoldUnits"]) / 1000;
+                                // falls short
                                 if (targetedAmount <=actualAmount)
                                 {
                                     if ((y + 1) > yAxis[1] - (targetedAmount * 10) && y < yAxis[1])
-                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, 190, 190, 250));
+                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, belowTargetRed, belowTargetGreen, belowTargetBlue));
                                     if (targetedAmount < actualAmount)
                                     {
                                         if (y >= yAxis[1] - actualAmount*10 && y < yAxis[1] - targetedAmount * 10)
-                                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, 250, 250, 190));
+                                            CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, exceedTargetRed, exceedTargetGreen, exceedTargetBlue));
                                          
                                         
                                     }
@@ -151,16 +195,16 @@ namespace Fractal1
                                 else
                                 {
                                     if ((y+1) >  yAxis[1] - (targetedAmount) * 10 && y < yAxis[1] - actualAmount * 10)
-                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, 250, 190, 190));
+                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, fallShortTargetRed, fallShortTargetGreen, fallShortTargetBlue));
                                     if (y >= yAxis[1] - actualAmount * 10 && y < yAxis[1] )
-                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, 190, 190, 250));
+                                        CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, belowTargetRed, belowTargetGreen, belowTargetBlue));
                                     if (y < yAxis[1] - targetedAmount * 10)
                                         CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y,backgroundRed,backgroundGreen,backgroundBlue));
                                       
                                 }
                                 if (y == yAxis[1] - targetedAmount * 10 ||
                                     (y + 1) == yAxis[1] - targetedAmount * 10)
-                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, 10, 255, 10));
+                                    CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, targetLevelRed, targetLevelGreen, targetLevelBlue));
                                 
 
                             }
@@ -287,7 +331,7 @@ namespace Fractal1
         //            //  //    || ((y%yTickIntervals == 0||(y+1)%yTickIntervals==0) && (x > 2 && x < 12))
         //            //      )
         //            {
-        //                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, TicksAndAxisBackgroundBackgroundRed,ticksAndAxisGreen,tickAndAxisBlue));
+        //                CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, TicksAndAxisBackgroundBackgroundRed,axesGreenValue,tickAndAxisBlue));
         //            }
         //            //else if ( x%xTickIntervals == 0||
         //            //          (x+1)%xTickIntervals==0||

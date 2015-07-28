@@ -10,6 +10,6 @@
 namespace Fractal1 {
     
     
-    public partial class aspx_graphics {
+    public partial class TargetActualGraphCanvass {
     }
 }

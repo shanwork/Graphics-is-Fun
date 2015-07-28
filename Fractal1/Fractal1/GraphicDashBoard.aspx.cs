@@ -43,23 +43,23 @@ namespace Fractal1
             if (Session["whichLastChanged"].ToString() == "2")
             {
                 System.Threading.Thread.Sleep(250);
-                if (img1.Src == "Canvass1.aspx")
-                    img1.Src = "Canvass2.aspx";
+                if (img1.Src == "FractalCanvass1.aspx")
+                    img1.Src = "FractalCanvass2.aspx";
                 else
-                    img1.Src = "Canvass1.aspx";
+                    img1.Src = "FractalCanvass1.aspx";
                 Session["whichLastChanged"] = "1";
             }
             else if (Session["whichLastChanged"].ToString() == "1")
             {
                 System.Threading.Thread.Sleep(500);
-                if (img2.Src == "Canvass1Q1.aspx")
-                    img2.Src = "Canvass2Q2.aspx";
+                if (img2.Src == "FractalCanvass3.aspx")
+                    img2.Src = "FractalCanvass4.aspx";
                 else
-                    img2.Src = "Canvass1Q1.aspx";
+                    img2.Src = "FractalCanvass3.aspx";
                 getNextColor();
                 Session["whichLastChanged"] = "2";
             }
-            img3.Src = "Canvass3.aspx";
+            img3.Src = "TrigoGraph.aspx";
             StringBuilder table = new StringBuilder("<table border=1 cellpadding=0 cellspacing=0>");
             int currentRed = 50, currentGreen = 50, currentBlue = 50;
             bool isRedSession = int.TryParse(Session["currentRed"].ToString(), out currentRed);

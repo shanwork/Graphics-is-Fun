@@ -10,11 +10,12 @@ using Fractal1.Core;
 
 namespace Fractal1
 {
-    public partial class Canvass3 : System.Web.UI.Page
+    public partial class FractalCanvass4 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             RenderBitmap(true);
+
 
         }
         public void RenderBitmap(bool isRandom)
@@ -35,7 +36,7 @@ namespace Fractal1
             fractalIndex += 10;
             if (fractalIndex > 250)
                 fractalIndex = 0;
-            oCanvas = FractalElements.DrawSinGraph(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
+            oCanvas = FractalElements.DrawRandomXDecYInc(490, 440, 10, 380, 10, 380, red, green, blue, fractalIndex);
 
             oCanvas.Save(Response.OutputStream, ImageFormat.Jpeg);
             Response.End();

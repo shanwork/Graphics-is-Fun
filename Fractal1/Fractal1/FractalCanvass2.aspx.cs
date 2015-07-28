@@ -10,7 +10,7 @@ using Fractal1.Core;
 
 namespace Fractal1
 {
-    public partial class Canvass2 : System.Web.UI.Page
+    public partial class FractalCanvass2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace Fractal1
         }
     }
 
-    //public partial class Canvass2 : System.Web.UI.Page
+    //public partial class FractalCanvass2 : System.Web.UI.Page
     //{
     //    protected void Page_Load(object sender, EventArgs e)
     //    {
