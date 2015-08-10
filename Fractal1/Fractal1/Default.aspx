@@ -1,22 +1,18 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Fractal1._Default" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="CanvassHolder" runat="server">
-    <div>
+    
         
-        <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px silver; width:auto; height:auto;">
-         <asp:UpdatePanel ID="test" runat="server">
-              <Triggers>
-                  <asp:AsyncPostBackTrigger ControlID="tmr" EventName="Tick" />
-              </Triggers>
-            <ContentTemplate>
-                <asp:Timer ID="tmr" runat="server" OnTick="tmr_Tick" Interval="1500" ></asp:Timer>
-                <img id="img1" src="TrigoGraph.aspx" runat="server"  />
-                <asp:Label ID="lbl1" runat="server" Visible="false">A</asp:Label>
-                
-            </ContentTemplate>
-            </asp:UpdatePanel>
+        <div id="divFractals" runat="server" style="margin-top:5px;  width:auto;margin:5px; height:auto;">
+        
+                <img src="~/fractals/FractalHome1.aspx" id="FractalHone1" runat="server" />
+                 &nbsp;&nbsp;
+                <img src="~/fractals/FractalHome2.aspx" id="FractalHone2" runat="server" />
+                 &nbsp;&nbsp;
+                <img src="~/fractals/FractalHome3.aspx" id="FractalHone3" runat="server" />
+           
             </div>
          
-    </div>
+    
     
 </asp:Content>
  

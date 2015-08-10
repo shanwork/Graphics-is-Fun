@@ -52,15 +52,16 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/GraphicDashBoard">About Graphics</a></li>
+                        <li><a runat="server" href="~/GraphicDashBoardAnimation">Fractal With Animation(flickers)</a></li>
                         <li><a runat="server" href="~/TestGraphs">Chart and Other Graphs</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="container body-content" style="border:5px inset;padding:20px; margin-top:10px;background-color:rgb(200,210,255);">
-           <div style="float:left;border:outset 3px silver; margin-bottom:5px; width:auto; height:auto;background-color:rgb(220,240,255);padding:5px;">
+        <div   style="border-radius:10px; border:    inset 5px; min-height: 640px; min-width: 800px; padding: 20px;margin:10px; width:auto;height:auto: 5px; background-color: #cAcAcA;">
+         
+           <div style="border-radius:5px; border:outset 3px silver; margin-bottom:5px; width:auto; height:auto;background-color:rgb(220,240,255);padding:5px;">
             Welcome to my website.. to see trials and Proof of concepts on graphics, these are POCs which I am in the process of developing, and refining
             <ul> * <a href="GraphicDashBoard.aspx"> Fractals with changing colors and an attempt to a sinusoidal curse</a></ul>
             <ul>* <a href="TestGraphs.aspx">Bar Graph for showing targetted versus actual quantities</a></ul>
@@ -71,9 +72,10 @@
             Please feel free to email me at champgads@gmail.com
          
         </div><p></p>
-           
-            <asp:ContentPlaceHolder ID="CanvassHolder" runat="server">
+           <div id="graphicsHolder" class="homePageInnerframe" style="border-radius:7px;min-height:600px;height:auto;  border: outset 3px; padding: 20px; margin:5px;background-color: #eaeaef;">
+             <asp:ContentPlaceHolder ID="CanvassHolder" runat="server">
             </asp:ContentPlaceHolder>
+               </div>
             <hr />
             
             <footer>

@@ -2,10 +2,11 @@
 <%@ Register Src="~/TargetActualGraphContainer.ascx" TagPrefix="Graph" TagName="TargetActual" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="CanvassHolder" runat="server">
-    <div id="graphGridContainer" style="float:left;border: solid 2px gray; margin-top:35px;padding:5px; background-color:rgb(235,240,240);"> 
+    <div id="graphGridContainer" style="float:left;border: solid 2px gray; background-color:rgb(235,240,240);"> 
     <h3>UNIT SALES: TARGETED, ACTUAL, EXCEEDED AND FALL SHORT BARS *</h3>
     <div id="graphContainer" style="float:left;border: solid 2px silver; margin-right:15px; background-color:rgb(220,240,240);"> 
-    <Graph:TargetActual ID="SalesGraph" 
+    <Graph:TargetActual ID="SalesGraph" HdnIdentifier="TestUnit"
+            GraphDimensions="600,500"
             GraphBackground="220,220,220" 
             AxesColor="0,30,100" 
             TargetLevelColor="9,46,32"

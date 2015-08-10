@@ -15,6 +15,8 @@ namespace Fractal1
 {
     public partial class TargetActualGraphCanvass : System.Web.UI.Page
     {
+        public string HdnIdentifier;
+        int bitmapWidth, bitmapHeight;
         int backgroundRed, backgroundGreen, backgroundBlue;
         int axesRedValue, axesGreenValue, axesBlueValue;
         int targetLevelRed, targetLevelGreen, targetLevelBlue ;
@@ -29,6 +31,18 @@ namespace Fractal1
         }
         void SetValues()
         {
+            
+            
+            bitmapWidth = 590; bitmapHeight = 490;
+            if (Session["GraphDimensions"] != null)
+            {
+                string[] graphDimensions = Session["GraphDimensions"].ToString().Split(',');
+                if (graphDimensions.Length == 2)
+                {
+                    bool bWidth = int.TryParse(graphDimensions[0], out bitmapWidth);
+                    bool bHeight = int.TryParse(graphDimensions[1], out bitmapHeight);
+                }
+            }
             backgroundRed= backgroundGreen= backgroundBlue = 220;
             if (Session["GraphBackground"] != null)
             {
@@ -127,8 +141,7 @@ namespace Fractal1
                 int numXTicks = dtRegionSalesByUnits.Rows.Count + 2;
                 int numYTicks = 10;
                 int unitY = 1000;
-                int bitmapWidth = 590, bitmapHeight = 490;
-
+                
                 // factor as to one pixel represents how much quantity
                 quantityToPixel = (((maxSalesInt > maxTargetInt ? maxSalesInt : maxTargetInt) + 1000) / unitY)
                     / (bitmapHeight - 19);

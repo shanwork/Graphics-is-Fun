@@ -43,19 +43,19 @@ namespace Fractal1
             if (Session["whichLastChanged"].ToString() == "2")
             {
                 System.Threading.Thread.Sleep(250);
-                if (img1.Src == "FractalCanvass1.aspx")
-                    img1.Src = "FractalCanvass2.aspx";
+                if (img1.Src == "~/fractals/FractalCanvass1.aspx")
+                    img1.Src = "~/fractals/FractalCanvass2.aspx";
                 else
-                    img1.Src = "FractalCanvass1.aspx";
+                    img1.Src = "~/fractals/FractalCanvass1.aspx";
                 Session["whichLastChanged"] = "1";
             }
             else if (Session["whichLastChanged"].ToString() == "1")
             {
                 System.Threading.Thread.Sleep(500);
-                if (img2.Src == "FractalCanvass3.aspx")
-                    img2.Src = "FractalCanvass4.aspx";
+                if (img2.Src == "~/fractals/FractalCanvass3.aspx")
+                    img2.Src = "~/fractals/FractalCanvass4.aspx";
                 else
-                    img2.Src = "FractalCanvass3.aspx";
+                    img2.Src = "~/fractals/FractalCanvass3.aspx";
                 getNextColor();
                 Session["whichLastChanged"] = "2";
             }
@@ -70,8 +70,6 @@ namespace Fractal1
             Session["red"] = Session["currentRed"];
             Session["green"] = Session["currentGreen"];
             Session["blue"] = Session["currentBlue"];
-            
-            lbl1.Text = table.ToString();
             
         }
         void getNextColor()

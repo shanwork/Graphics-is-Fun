@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GraphicDashBoard.aspx.cs" Inherits="Fractal1.GraphicDashBoard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GraphicDashBoardAnimation.aspx.cs" Inherits="Fractal1.GraphicDashBoard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="CanvassHolder" runat="server">
    
     <div>
@@ -17,25 +17,22 @@
                <td> 
                    <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px silver; width:auto; height:auto;">
         
-                <img id="img1" src="FractalCanvass1.aspx" runat="server"  />
-                <asp:Label ID="lbl1" runat="server" Visible="false">A</asp:Label>
-                
+                <img id="img1" src="~/fractals/FractalCanvass1.aspx" runat="server"  />
+                 
           
             </div>
        </td>
                <td>   
                    <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px silver; width:auto; height:auto;">
          
-                <img id="img2" src="FractalCanvass3.aspx" runat="server"  />
-                <asp:Label ID="Label1" runat="server" Visible="false">A</asp:Label>
-                
+                <img id="img2" src="~/fractals/FractalCanvass3.aspx" runat="server"  />                
             
     </div></td>
            </tr>
-      <tr>
+      <!--tr>
                <td> 
                    <div style="float:right;margin-top:5px; margin-right:100px;:inset 5px gray; width:auto; height:auto;">
-        <img id="img3" src="TrigoGraph.aspx" runat="server"  />
+        <img id="img3" src="TrigoGraph.aspx" runat="server" visible="false"  />
                 
                  
                 
@@ -48,7 +45,7 @@
                 
             
     </div></td>
-           </tr>
+           </!--tr--->
 
        </table>
            </ContentTemplate>

@@ -13,39 +13,39 @@ namespace Fractal1 {
     public partial class _Default {
         
         /// <summary>
-        /// test control.
+        /// divFractals control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel test;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFractals;
         
         /// <summary>
-        /// tmr control.
+        /// FractalHone1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer tmr;
+        protected global::System.Web.UI.HtmlControls.HtmlImage FractalHone1;
         
         /// <summary>
-        /// img1 control.
+        /// FractalHone2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage img1;
+        protected global::System.Web.UI.HtmlControls.HtmlImage FractalHone2;
         
         /// <summary>
-        /// lbl1 control.
+        /// FractalHone3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl1;
+        protected global::System.Web.UI.HtmlControls.HtmlImage FractalHone3;
     }
 }

@@ -163,10 +163,16 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="FractalCanvass1.aspx" />
-    <Content Include="FractalCanvass3.aspx" />
-    <Content Include="FractalCanvass2.aspx" />
-    <Content Include="FractalCanvass4.aspx" />
+    <Content Include="fractals\FractalCanvass1.aspx" />
+    <Content Include="fractals\FractalCanvass3.aspx" />
+    <Content Include="fractals\FractalCanvass2.aspx" />
+    <Content Include="fractals\FractalCanvass4.aspx" />
+    <Content Include="fractals\FractalHome1.aspx" />
+    <Content Include="fractals\FractalHome2.aspx" />
+    <Content Include="fractals\FractalHome3.aspx" />
+    <Content Include="fractals\FractalsParent.aspx" />
+    <Content Include="StatisticsPage.aspx" />
+    <Content Include="TrigoCanvass.ascx" />
     <Content Include="TrigoGraph.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -174,7 +180,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="TargetActualGraphContainer.ascx" />
-    <Content Include="GraphicDashBoard.aspx" />
+    <Content Include="GraphicDashBoardAnimation.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -217,6 +223,7 @@
     <Content Include="Site.Master" />
     <Content Include="TargetActualGraphCanvass.aspx" />
     <Content Include="TestGraphs.aspx" />
+    <Content Include="TrigoGraphGD.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -348,33 +355,76 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLayer\SalesData.cs" />
-    <Compile Include="FractalCanvass1.aspx.cs">
+    <Compile Include="Core\Singleton.cs" />
+    <Compile Include="fractals\FractalCanvass1.aspx.cs">
       <DependentUpon>FractalCanvass1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FractalCanvass1.aspx.designer.cs">
+    <Compile Include="fractals\FractalCanvass1.aspx.designer.cs">
       <DependentUpon>FractalCanvass1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FractalCanvass3.aspx.cs">
+    <Compile Include="fractals\FractalCanvass3.aspx.cs">
       <DependentUpon>FractalCanvass3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FractalCanvass3.aspx.designer.cs">
+    <Compile Include="fractals\FractalCanvass3.aspx.designer.cs">
       <DependentUpon>FractalCanvass3.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FractalCanvass2.aspx.cs">
+    <Compile Include="fractals\FractalCanvass2.aspx.cs">
       <DependentUpon>FractalCanvass2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FractalCanvass2.aspx.designer.cs">
+    <Compile Include="fractals\FractalCanvass2.aspx.designer.cs">
       <DependentUpon>FractalCanvass2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FractalCanvass4.aspx.cs">
+    <Compile Include="fractals\FractalCanvass4.aspx.cs">
       <DependentUpon>FractalCanvass4.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FractalCanvass4.aspx.designer.cs">
+    <Compile Include="fractals\FractalCanvass4.aspx.designer.cs">
       <DependentUpon>FractalCanvass4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fractals\FractalHome1.aspx.cs">
+      <DependentUpon>FractalHome1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fractals\FractalHome1.aspx.designer.cs">
+      <DependentUpon>FractalHome1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fractals\FractalHome2.aspx.cs">
+      <DependentUpon>FractalHome2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fractals\FractalHome2.aspx.designer.cs">
+      <DependentUpon>FractalHome2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fractals\FractalHome3.aspx.cs">
+      <DependentUpon>FractalHome3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fractals\FractalHome3.aspx.designer.cs">
+      <DependentUpon>FractalHome3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fractals\FractalsParent.aspx.cs">
+      <DependentUpon>FractalsParent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fractals\FractalsParent.aspx.designer.cs">
+      <DependentUpon>FractalsParent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatisticsPage.aspx.cs">
+      <DependentUpon>StatisticsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatisticsPage.aspx.designer.cs">
+      <DependentUpon>StatisticsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrigoCanvass.ascx.cs">
+      <DependentUpon>TrigoCanvass.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrigoCanvass.ascx.designer.cs">
+      <DependentUpon>TrigoCanvass.ascx</DependentUpon>
     </Compile>
     <Compile Include="TrigoGraph.aspx.cs">
       <DependentUpon>TrigoGraph.aspx</DependentUpon>
@@ -408,12 +458,12 @@
     <Compile Include="TargetActualGraphContainer.ascx.designer.cs">
       <DependentUpon>TargetActualGraphContainer.ascx</DependentUpon>
     </Compile>
-    <Compile Include="GraphicDashBoard.aspx.cs">
-      <DependentUpon>GraphicDashBoard.aspx</DependentUpon>
+    <Compile Include="GraphicDashBoardAnimation.aspx.cs">
+      <DependentUpon>GraphicDashBoardAnimation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GraphicDashBoard.aspx.designer.cs">
-      <DependentUpon>GraphicDashBoard.aspx</DependentUpon>
+    <Compile Include="GraphicDashBoardAnimation.aspx.designer.cs">
+      <DependentUpon>GraphicDashBoardAnimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -445,6 +495,13 @@
     </Compile>
     <Compile Include="TestGraphs.aspx.designer.cs">
       <DependentUpon>TestGraphs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrigoGraphGD.aspx.cs">
+      <DependentUpon>TrigoGraphGD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrigoGraphGD.aspx.designer.cs">
+      <DependentUpon>TrigoGraphGD.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

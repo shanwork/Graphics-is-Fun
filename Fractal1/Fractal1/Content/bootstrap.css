@@ -4926,7 +4926,20 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
-
+.homePageframe{
+    border:inset 5px;
+    min-height:640px;
+    min-width:800px;
+    padding:20px;
+    margin:5px;
+    background-color:#cAcAcA;
+}
+.homePageInnerframe{
+    border:outset 3px;
+    
+    padding:20px;
+    background-color:#cAcAc9;
+}
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;

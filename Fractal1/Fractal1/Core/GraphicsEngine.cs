@@ -340,23 +340,43 @@ namespace Fractal1.Core
 
             return img.Bitmap;
         }
-        public static Bitmap DrawSinGraph(int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
+        public static void DrawSinGraphGD(Graphics gd, int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
+        {
+            double yF = 0, yF_Prev = 0;
+            List<Tuple<int, int>> graphPoints = new List<Tuple<int,int>>();
+            List<Point> points = new List<Point>();
+            for (int xM2 = width / 2; xM2 >= 0; xM2--)
+            {
+                int x = xM2 - (width / 2);
+                yF = ((12 * Math.Sin(3 * x) / (1 + Math.Abs(x))) + (double)height / 2.0);
+               double deviation = (double)(height / 2.0 - yF) * 150.0;
+                yF = (double)(height / 2.0) + deviation;
+                if (yF >= 0 && yF < height)
+                {
+                    points.Add(new Point(Convert.ToInt32(yF),xM2 ));
+                    
+                }
+                
+
+
+            }
+            Pen graphPen = new Pen(new SolidBrush(Color.Black)) ;
+            gd.DrawCurve(graphPen,points.ToArray()); //(new Pen(new SolidBrush(Color.Black),2.0), points.ToArray());
+        }
+
+        public static Bitmap DrawSinGraph( int width, int height, double rMin, double rMax, double iMin, double iMax, int r = 0, int g = 0, int b = 0, int ifractalIndex = 0)
         {
             List<Color> Palette = GenerateColorPalette(r, g, b);
             FastBitmap img = new FastBitmap(width, height); // Bitmap to contain the set
-            Color DrawGraph = Color.FromArgb(255, r, g, b);
-            Color DrawGray = Color.FromArgb(255, 255 - r, 255 - g, 255 - b);
+            Color DrawGraph = Color.FromArgb(255,0, 70, 10);
+            Color DrawGray = Color.FromArgb(255, 240, 240, 240);
 
             double rScale = (Math.Abs(rMin) + Math.Abs(rMax)) / width; // Amount to move each pixel in the real numbers
             double iScale = (Math.Abs(iMin) + Math.Abs(iMax)) / height; // Amount to move each pixel in the imaginary numbers
 
             Random xRand = new Random();
             Random yRand = new Random();
-            for (int x1 = 0; x1 < width; x1++)
-            {
-                for (int y1 = 0; y1 < height; y1++)
-                    img.SetPixel(x1, y1, DrawGray);
-            }
+             
             for (int xM2 = width / 2; xM2 >= 0; xM2--)
             {
                 int x = xM2 - (width / 2);
@@ -364,6 +384,7 @@ namespace Fractal1.Core
                 double deviation = (double)(height / 2.0 - yF) * 150.0;
                 yF = (double)(height / 2.0) + deviation;
                 if (yF >= 0 && yF < height)
+
                     img.SetPixel(xM2, (int)yF, DrawGraph); // Set the pixel if the magnitude is greater than two
                 img.SetPixel(xM2, (int)yF + 1, DrawGraph);
                 img.SetPixel(xM2, (int)yF - 1, DrawGraph);

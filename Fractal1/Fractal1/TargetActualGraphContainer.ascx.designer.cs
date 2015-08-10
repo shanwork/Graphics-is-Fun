@@ -11,5 +11,23 @@ namespace Fractal1 {
     
     
     public partial class TargetActualGraphContainer {
+        
+        /// <summary>
+        /// hdnIdentifier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnIdentifier;
+        
+        /// <summary>
+        /// targetActuals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage targetActuals;
     }
 }
