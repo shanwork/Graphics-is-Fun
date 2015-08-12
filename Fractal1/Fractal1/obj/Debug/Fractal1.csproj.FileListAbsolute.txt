@@ -56,6 +56,7 @@ C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Fr
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Antlr3.Runtime.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\AspNet.ScriptManager.jQuery.dll
+C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\DataModelLibrary1.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\EntityFramework.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\EntityFramework.SqlServer.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Microsoft.AspNet.FriendlyUrls.dll
@@ -80,6 +81,7 @@ C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Ow
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\System.Web.Optimization.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\System.Web.Providers.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\WebGrease.dll
+C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\DataModelLibrary1.pdb
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\System.Web.Optimization.xml
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Antlr3.Runtime.pdb
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Newtonsoft.Json.xml
@@ -99,5 +101,6 @@ C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Mi
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\obj\Debug\Fractal1.csprojResolveAssemblyReference.cache
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\obj\Debug\Fractal1.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\obj\Debug\Fractal1.pdb

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TestGraphs.aspx.cs" Inherits="Fractal1.TestGraphs" %>
-<%@ Register Src="~/TargetActualGraphContainer.ascx" TagPrefix="Graph" TagName="TargetActual" %>
+<%@ Register Src="~/graphs/TargetActualGraphContainer.ascx" TagPrefix="Graph" TagName="TargetActual" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="CanvassHolder" runat="server">
     <div id="graphGridContainer" style="float:left;border: solid 2px gray; background-color:rgb(235,240,240);"> 

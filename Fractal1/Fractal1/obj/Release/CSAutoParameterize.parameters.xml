@@ -3,4 +3,7 @@
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-Fractal1-20150602065108.mdf;Initial Catalog=aspnet-Fractal1-20150602065108;Integrated Security=True" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Shantanu\\CREATIONS\\Graphics\ is\ Fun!!\\Graphics-is-Fun\\Fractal1\\Fractal1\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
+  <parameter name="DataModelLibrary1.HealthData-Web.config Connection String" description="DataModelLibrary1.HealthData Connection String used in web.config by the application to access the database." defaultValue="DataModelLibrary1.HealthData_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Shantanu\\CREATIONS\\Graphics\ is\ Fun!!\\Graphics-is-Fun\\Fractal1\\Fractal1\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataModelLibrary1.HealthData']/@connectionString" />
+  </parameter>
 </parameters>

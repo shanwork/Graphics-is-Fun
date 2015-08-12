@@ -50,3 +50,5 @@ C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\Mi
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\obj\Release\Fractal1.dll
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\obj\Release\Fractal1.pdb
 C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\obj\Release\Fractal1.csprojResolveAssemblyReference.cache
+C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\DataModelLibrary1.dll
+C:\Shantanu\CREATIONS\Graphics is Fun!!\Graphics-is-Fun\Fractal1\Fractal1\bin\DataModelLibrary1.pdb

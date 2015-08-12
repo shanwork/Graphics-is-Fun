@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DataModelLibrary1;
 
 namespace Fractal1.Core
 {
@@ -9,6 +10,7 @@ namespace Fractal1.Core
 
     public class Singleton
     {
+        public static EVSalesMaint EVSales = new EVSalesMaint(true);
         private static Singleton instance;
 
         public struct RGBElement

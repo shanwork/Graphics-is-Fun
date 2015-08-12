@@ -163,6 +163,9 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="EVSales\EVGraphByRegion.aspx" />
+    <Content Include="EVSales\EVSalesStats.aspx" />
+    <Content Include="EVSales\GroupByRegionGraph.aspx" />
     <Content Include="fractals\FractalCanvass1.aspx" />
     <Content Include="fractals\FractalCanvass3.aspx" />
     <Content Include="fractals\FractalCanvass2.aspx" />
@@ -171,15 +174,16 @@
     <Content Include="fractals\FractalHome2.aspx" />
     <Content Include="fractals\FractalHome3.aspx" />
     <Content Include="fractals\FractalsParent.aspx" />
+    <Content Include="graphs\GraphsParent.aspx" />
     <Content Include="StatisticsPage.aspx" />
-    <Content Include="TrigoCanvass.ascx" />
-    <Content Include="TrigoGraph.aspx" />
+    <Content Include="graphs\TrigoCanvass.ascx" />
+    <Content Include="graphs\TrigoGraph.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="TargetActualGraphContainer.ascx" />
+    <Content Include="graphs\TargetActualGraphContainer.ascx" />
     <Content Include="GraphicDashBoardAnimation.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -221,7 +225,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
-    <Content Include="TargetActualGraphCanvass.aspx" />
+    <Content Include="graphs\TargetActualGraphCanvass.aspx" />
     <Content Include="TestGraphs.aspx" />
     <Content Include="TrigoGraphGD.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -356,6 +360,27 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLayer\SalesData.cs" />
     <Compile Include="Core\Singleton.cs" />
+    <Compile Include="EVSales\EVGraphByRegion.aspx.cs">
+      <DependentUpon>EVGraphByRegion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EVSales\EVGraphByRegion.aspx.designer.cs">
+      <DependentUpon>EVGraphByRegion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EVSales\EVSalesStats.aspx.cs">
+      <DependentUpon>EVSalesStats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EVSales\EVSalesStats.aspx.designer.cs">
+      <DependentUpon>EVSalesStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EVSales\GroupByRegionGraph.aspx.cs">
+      <DependentUpon>GroupByRegionGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EVSales\GroupByRegionGraph.aspx.designer.cs">
+      <DependentUpon>GroupByRegionGraph.aspx</DependentUpon>
+    </Compile>
     <Compile Include="fractals\FractalCanvass1.aspx.cs">
       <DependentUpon>FractalCanvass1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -412,6 +437,13 @@
     <Compile Include="fractals\FractalsParent.aspx.designer.cs">
       <DependentUpon>FractalsParent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="graphs\GraphsParent.aspx.cs">
+      <DependentUpon>GraphsParent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="graphs\GraphsParent.aspx.designer.cs">
+      <DependentUpon>GraphsParent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="StatisticsPage.aspx.cs">
       <DependentUpon>StatisticsPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,18 +451,18 @@
     <Compile Include="StatisticsPage.aspx.designer.cs">
       <DependentUpon>StatisticsPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TrigoCanvass.ascx.cs">
+    <Compile Include="graphs\TrigoCanvass.ascx.cs">
       <DependentUpon>TrigoCanvass.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TrigoCanvass.ascx.designer.cs">
+    <Compile Include="graphs\TrigoCanvass.ascx.designer.cs">
       <DependentUpon>TrigoCanvass.ascx</DependentUpon>
     </Compile>
-    <Compile Include="TrigoGraph.aspx.cs">
+    <Compile Include="graphs\TrigoGraph.aspx.cs">
       <DependentUpon>TrigoGraph.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TrigoGraph.aspx.designer.cs">
+    <Compile Include="graphs\TrigoGraph.aspx.designer.cs">
       <DependentUpon>TrigoGraph.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
@@ -451,11 +483,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="TargetActualGraphContainer.ascx.cs">
+    <Compile Include="graphs\TargetActualGraphContainer.ascx.cs">
       <DependentUpon>TargetActualGraphContainer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TargetActualGraphContainer.ascx.designer.cs">
+    <Compile Include="graphs\TargetActualGraphContainer.ascx.designer.cs">
       <DependentUpon>TargetActualGraphContainer.ascx</DependentUpon>
     </Compile>
     <Compile Include="GraphicDashBoardAnimation.aspx.cs">
@@ -482,11 +514,11 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="TargetActualGraphCanvass.aspx.cs">
+    <Compile Include="graphs\TargetActualGraphCanvass.aspx.cs">
       <DependentUpon>TargetActualGraphCanvass.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TargetActualGraphCanvass.aspx.designer.cs">
+    <Compile Include="graphs\TargetActualGraphCanvass.aspx.designer.cs">
       <DependentUpon>TargetActualGraphCanvass.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestGraphs.aspx.cs">
@@ -513,6 +545,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\DataModelLibrary1\DataModelLibrary1\DataModelLibrary1.csproj">
+      <Project>{e0ccb2df-5916-410d-95fd-393fa06d84e4}</Project>
+      <Name>DataModelLibrary1</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
