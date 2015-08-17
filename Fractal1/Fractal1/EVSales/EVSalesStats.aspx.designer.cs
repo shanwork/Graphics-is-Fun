@@ -22,22 +22,31 @@ namespace Fractal1 {
         protected global::System.Web.UI.WebControls.GridView gvGrpByRegion;
         
         /// <summary>
-        /// gvGrpByModel control.
+        /// gvGrpByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGrpByModel;
+        protected global::System.Web.UI.WebControls.GridView gvGrpByProduct;
         
         /// <summary>
-        /// gvGrpByRegionModel control.
+        /// gvGrpByRegionProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGrpByRegionModel;
+        protected global::System.Web.UI.WebControls.GridView gvGrpByRegionProduct;
+        
+        /// <summary>
+        /// scrollPos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden scrollPos;
         
         /// <summary>
         /// gvSaleDetails control.

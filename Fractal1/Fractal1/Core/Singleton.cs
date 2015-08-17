@@ -10,7 +10,8 @@ namespace Fractal1.Core
 
     public class Singleton
     {
-        public static EVSalesMaint EVSales = new EVSalesMaint(true);
+        public static EVSalesMaint EVSalesStatic = new EVSalesMaint(true);
+        public  EVSalesMaint EVSales = null;//new EVSalesMaint(true);
         private static Singleton instance;
 
         public struct RGBElement
@@ -21,7 +22,10 @@ namespace Fractal1.Core
         public static Dictionary<string, Dictionary<string, string> > Colors ;
 
 
-        private Singleton() { if (Colors == null) Colors = new Dictionary<string, Dictionary<string, string>>(); }
+        private Singleton() { 
+            if (Colors == null) Colors = new Dictionary<string, Dictionary<string, string>>();
+            if (EVSales == null) EVSales = new EVSalesMaint(true);
+        }
 
         public static Singleton Instance
         {

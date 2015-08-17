@@ -11,7 +11,7 @@ using Fractal1.BusinessLayer;
 using Fractal1.graphs;
 using DataModelLibrary1;
 
-namespace Fractal1.EVSales
+namespace Fractal1.EVSalesGraphs
 {
     public partial class EVGraphByRegion : System.Web.UI.Page
     {
@@ -21,7 +21,8 @@ namespace Fractal1.EVSales
         }
         public void RenderBitmap(bool isRandom, int bitmapWidth, int bitmapHeight, Tuple<int, int, int> rgb = null, int marginX = 0, int marginY = 0)
         {
-            var IEnumSalesByRegion = Singleton.EVSales.groupByRegion().AsEnumerable();
+            
+            var IEnumSalesByRegion = Singleton.Instance.EVSales.groupByRegion().AsEnumerable();
             var maxSaleAmount = 
                 (from row in IEnumSalesByRegion 
                      select Convert.ToDouble(row.Item2.Replace("$","").Replace(",",""))).Max();
@@ -104,9 +105,9 @@ namespace Fractal1.EVSales
                                     int xMultiple = (x - bt) % xTickIntervals == 0 ? (x - bt) / xTickIntervals :
                                              (x + bt) / xTickIntervals;
                                     xMultiple--;
-                                    if (Singleton.EVSales.groupByRegion().Count > xMultiple && y < yAxis[1])
+                                    if (Singleton.Instance.EVSales.groupByRegion().Count > xMultiple && y < yAxis[1])
                                     {
-                                        regionSalesAmount = Convert.ToInt32(Singleton.EVSales.groupByRegion()[xMultiple].Item2.Replace("$", "").Replace(",", "")) / numYTicks;
+                                        regionSalesAmount = Convert.ToInt32(Singleton.Instance.EVSales.groupByRegion()[xMultiple].Item2.Replace("$", "").Replace(",", "")) / numYTicks;
                                         if ((y + 1) > yAxis[1] - (regionSalesAmount * 10) && y < yAxis[1])
                                                 CanvassPoints.Add(new Tuple<int, int, int, int, int>(x, y, regionSalesRedValue, regionSalesGreenValue, regionSalesBlueValue));
                                          
